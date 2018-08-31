@@ -18,7 +18,9 @@ public class Project {
     Long assignedAmount;
     Long clientId; //parent
     Date calendarStartDate;
-    Date CalendarEndDate;
+    Date calendarEndDate;
+    Date lastUpdate;
+    Boolean active;
     
     //methods
     //constructors
@@ -31,12 +33,12 @@ public class Project {
         this.name = name;
     }
 
-    public Project(String name, Long clientId, Date calendarStartDate, Date CalendarEndDate) {
+    public Project(String name, Long clientId, Date calendarStartDate, Date calendarEndDate) {
         
         this.name = name;
         this.clientId = clientId;
         this.calendarStartDate = calendarStartDate;
-        this.CalendarEndDate = CalendarEndDate;
+        this.calendarEndDate = calendarEndDate;
     }
     
     //getter
@@ -51,12 +53,39 @@ public class Project {
     public Long getClientId() { return clientId; }
 
     public Date getCalendarStartDate() { return calendarStartDate; }
+<<<<<<< HEAD
     
     public Date getCalendarEndDate() { return CalendarEndDate; }
 
     //setters
     public void setId(Long Id) { this.Id = Id; }
 
+=======
+
+    public Date getCalendarEndDate() { return calendarEndDate; }
+    
+    public Long getId() {
+		return Id;
+	}
+
+	public void setId(Long id) {
+		Id = id;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public Date getLastUpdate() {
+		return lastUpdate;
+	}
+	
+	public Boolean getActive() {
+		return active;
+	}
+
+	//setters
+>>>>>>> 086e7669bc501d529813100079a2756229599b4a
     public void setName(String name) { this.name = name; }
 
     public void setDescription(String description) { this.description = description; }
@@ -67,5 +96,21 @@ public class Project {
 
     public void setCalendarStartDate(Date calendarStartDate) { this.calendarStartDate = calendarStartDate; }
 
+<<<<<<< HEAD
     public void setCalendarEndDate(Date CalendarEndDate) { this.CalendarEndDate = CalendarEndDate; }
+=======
+    public void setCalendarEndDate(Date calendarEndDate) { this.calendarEndDate = calendarEndDate; }   
+    
+    public void setLastUpdate(Date lastUpdate) {
+		this.lastUpdate = lastUpdate;
+	}
+    
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+>>>>>>> 086e7669bc501d529813100079a2756229599b4a
 }
