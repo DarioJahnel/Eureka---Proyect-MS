@@ -1,27 +1,30 @@
 package com.accenture.javacapabilty.backbone.model;
 
 import java.util.Date;
+import javax.persistence.Entity;
 
-public class Proyect {
+@Entity
+public class Project {
     
     //attributes
     String name;
+    String description;
     Long clientId; //parent
     Date calendarStartDate;
     Date CalendarEndDate;
     
     //methods
     //constructors
-    public Proyect() {
+    public Project() {
 
     }
     
-    public Proyect(String name) {
+    public Project(String name) {
         
         this.name = name;
     }
 
-    public Proyect(String name, Long clientId, Date calendarStartDate, Date CalendarEndDate) {
+    public Project(String name, Long clientId, Date calendarStartDate, Date CalendarEndDate) {
         
         this.name = name;
         this.clientId = clientId;

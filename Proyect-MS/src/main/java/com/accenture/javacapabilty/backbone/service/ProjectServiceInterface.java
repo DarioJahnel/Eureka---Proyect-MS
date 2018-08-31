@@ -1,15 +1,15 @@
 package com.accenture.javacapabilty.backbone.service;
 
-import com.accenture.javacapabilty.backbone.model.Proyect;
+import com.accenture.javacapabilty.backbone.model.Project;
 
 public interface ProjectServiceInterface {
 
-	public Proyect getProjectById(Long id);
+	public Project getProjectById(Long id);
 	
 	public String deleteProjectById(Long id);
 	
-	public Proyect modifyProjectById(Long id, Proyect editedProject);
+	public Project modifyProjectById(Long id, Project editedProject);
 	
-	public Proyect createNewProject(Proyect newProject);
+	public Project createNewProject(Project newProject);
 	
 }

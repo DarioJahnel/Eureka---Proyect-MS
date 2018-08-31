@@ -2,11 +2,13 @@ package com.accenture.javacapabilty;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
-public class JavacapabiltyApplication {
+@EnableDiscoveryClient
+public class ProjectAplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(JavacapabiltyApplication.class, args);
+		SpringApplication.run(ProjectAplication.class, args);
 	}
 }
