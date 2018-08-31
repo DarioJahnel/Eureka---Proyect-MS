@@ -19,6 +19,7 @@ public class Project {
     Date calendarStartDate;
     Date calendarEndDate;
     Date lastUpdate;
+    Boolean active;
     
     //methods
     //constructors
@@ -63,6 +64,10 @@ public class Project {
 	public Date getLastUpdate() {
 		return lastUpdate;
 	}
+	
+	public Boolean getActive() {
+		return active;
+	}
 
 	//setters
     public void setName(String name) { this.name = name; }
@@ -79,5 +84,9 @@ public class Project {
     
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 }

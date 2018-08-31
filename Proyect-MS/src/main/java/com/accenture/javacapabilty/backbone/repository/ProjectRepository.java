@@ -15,7 +15,7 @@ import com.accenture.javacapabilty.backbone.model.Project;
 
 /**
  *
- * @author matias.ariel.tubio
+ * @author Titán
  */
 public interface ProjectRepository extends CrudRepository<Project,Long> {
     
@@ -28,5 +28,4 @@ public interface ProjectRepository extends CrudRepository<Project,Long> {
 	List<Project> findByCalendarStartDate(Date startDate);
 	
 	List<Project> findByCalendarEndDate(Date endDate);
-	
 }

@@ -13,7 +13,7 @@ public interface ProjectServiceInterface {
 	
 	public Project modifyProjectById(Long id, Project editedProject);
 	
-	public Project createNewProject(Project newProject);
+	public void createNewProject(Project newProject);
 	
 	public List<Project> getProjectsByClientId(Long clientId);
 	
