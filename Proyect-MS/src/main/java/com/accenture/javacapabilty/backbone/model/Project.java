@@ -17,7 +17,8 @@ public class Project {
     String description;
     Long clientId; //parent
     Date calendarStartDate;
-    Date CalendarEndDate;
+    Date calendarEndDate;
+    Date lastUpdate;
     
     //methods
     //constructors
@@ -30,12 +31,12 @@ public class Project {
         this.name = name;
     }
 
-    public Project(String name, Long clientId, Date calendarStartDate, Date CalendarEndDate) {
+    public Project(String name, Long clientId, Date calendarStartDate, Date calendarEndDate) {
         
         this.name = name;
         this.clientId = clientId;
         this.calendarStartDate = calendarStartDate;
-        this.CalendarEndDate = CalendarEndDate;
+        this.calendarEndDate = calendarEndDate;
     }
 
     //getters
@@ -45,14 +46,38 @@ public class Project {
 
     public Date getCalendarStartDate() { return calendarStartDate; }
 
-    public Date getCalendarEndDate() { return CalendarEndDate; }
+    public Date getCalendarEndDate() { return calendarEndDate; }
+    
+    public Long getId() {
+		return Id;
+	}
 
-    //setters
+	public void setId(Long id) {
+		Id = id;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public Date getLastUpdate() {
+		return lastUpdate;
+	}
+
+	//setters
     public void setName(String name) { this.name = name; }
 
     public void setClientId(Long clientId) { this.clientId = clientId; }
 
     public void setCalendarStartDate(Date calendarStartDate) { this.calendarStartDate = calendarStartDate; }
 
-    public void setCalendarEndDate(Date CalendarEndDate) { this.CalendarEndDate = CalendarEndDate; }   
+    public void setCalendarEndDate(Date calendarEndDate) { this.calendarEndDate = calendarEndDate; }   
+    
+    public void setLastUpdate(Date lastUpdate) {
+		this.lastUpdate = lastUpdate;
+	}
+    
+	public void setDescription(String description) {
+		this.description = description;
+	}
 }
