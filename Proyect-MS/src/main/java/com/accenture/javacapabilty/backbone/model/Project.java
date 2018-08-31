@@ -2,11 +2,17 @@ package com.accenture.javacapabilty.backbone.model;
 
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Project {
     
     //attributes
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    Long Id;
     String name;
     String description;
     Long clientId; //parent
