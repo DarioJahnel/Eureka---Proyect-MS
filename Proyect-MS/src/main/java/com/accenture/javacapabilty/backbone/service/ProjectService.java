@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.accenture.javacapabilty.backbone.model.Project;
 import com.accenture.javacapabilty.backbone.repository.ProjectRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ProjectService implements ProjectServiceInterface{
 
     @Autowired

@@ -12,11 +12,14 @@ import java.util.Optional;
 import org.springframework.data.repository.CrudRepository;
 
 import com.accenture.javacapabilty.backbone.model.Project;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author Titán
  */
+
+@Repository
 public interface ProjectRepository extends CrudRepository<Project,Long> {
     
 	Optional<Project> findById(Long id);
