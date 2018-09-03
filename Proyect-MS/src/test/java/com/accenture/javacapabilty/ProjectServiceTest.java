@@ -10,6 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.TestInfo;
 import org.mockito.Mock;
+import static org.mockito.Mockito.when;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -38,6 +39,6 @@ public class ProjectServiceTest extends TestCase {
     @DisplayName("Create new project")
     public void testCreateNewProjectById() {
         
-        
+        when(mocked.getId()).thenReturn(10l);
     }
 }

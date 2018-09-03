@@ -16,38 +16,38 @@ public class ProjectService implements ProjectServiceInterface{
 	ProjectRepository projectRepo;
 	
     @Override
-    public Project getProjectById(Long id) {
-
-    	Optional<Project> project = projectRepo.findById(id);
-    	
-    	if(project.isPresent()) return project.get();
-    	
-    	return null;
-    	
+    public Optional<Project> getProjectById(Long id) {
+    	return projectRepo.findById(id);   	
     }
 
     @Override
-    public String deleteProjectById(Long id) {
+    public Boolean deleteProjectById(Long id) {
     	
-    	Project project = getProjectById(id);
+        Boolean wasDeleted = false;
+    	Optional<Project> project = getProjectById(id);
     	
-    	if(project != null) {
-    		project.setActive(false);
+    	if(project.isPresent()) {
+            
+            project.get().setActive(false);
+            wasDeleted = true;    
     	}
     	
-    	return("Project is no longer active");
+    	return wasDeleted;
     }
 
     @Override
-    public Project modifyProjectById(Long id, Project editedProject) {
-    	Project project = getProjectById(id);
+    public Boolean modifyProjectById(Long id, Project editedProject) {
+        
+        Boolean modified = false;
+    	Optional<Project> project = getProjectById(id);
     	
-    	if(project!=null) {
-    		project = editedProject;
-    		return project;
+    	if(project.isPresent()) {
+            
+    		project = Optional.of(editedProject);
+                modified = true;
     	}
     	
-    	return null;
+    	return modified;
     }
 
     @Override
@@ -55,37 +55,44 @@ public class ProjectService implements ProjectServiceInterface{
     	projectRepo.save(newProject);
     }
 
-	@Override
-	public List<Project> getProjectsByClientId(Long clientId) {
-		List<Project> projectList = new ArrayList<>();
-		projectList.addAll(projectRepo.findByClientId(clientId));
+    @Override
+    public Optional<List<Project>> getProjectsByClientId(Long clientId) {
+        
+        Optional<List<Project>> requested = Optional.empty();
+	List<Project> projectList = new ArrayList<>();
+	projectList.addAll(projectRepo.findByClientId(clientId));
 		
-		if(!projectList.isEmpty()) {
-		return projectList;}
+	if(!projectList.isEmpty()) {
+            requested = Optional.of(projectList);
+        }
 		
-		return null;
-	}
+	return requested;
+    }
 
-	@Override
-	public List<Project> getProjectsByStartDate(Date startDate) {
-		List<Project> projectList = new ArrayList<>();
-		projectList.addAll(projectRepo.findByCalendarStartDate(startDate));
+    @Override
+    public Optional<List<Project>> getProjectsByStartDate(Date startDate) {
 		
-		if(!projectList.isEmpty()) {
-		return projectList;}
+        Optional<List<Project>> requested = Optional.empty();
+        List<Project> projectList = new ArrayList<>();
+	projectList.addAll(projectRepo.findByCalendarStartDate(startDate));
 		
-		return null;
-	}
+	if(!projectList.isEmpty())
+            requested = Optional.of(projectList);
+		
+        return requested;
+    }
 
-	@Override
-	public List<Project> getProjectsByEndDate(Date endDate) {
-		List<Project> projectList = new ArrayList<>();
-		projectList.addAll(projectRepo.findByCalendarEndDate(endDate));
+    @Override
+    public Optional<List<Project>> getProjectsByEndDate(Date endDate) {
 		
-		if(projectList.size() >= 1) {
-		return projectList;}
+        Optional<List<Project>> requested = Optional.empty();
+        List<Project> projectList = new ArrayList<>();
+	projectList.addAll(projectRepo.findByCalendarEndDate(endDate));
 		
-		return null;
-	}
+	if(!projectList.isEmpty())
+            requested = Optional.of(projectList);
+		
+        return requested;
+    }
 
 }

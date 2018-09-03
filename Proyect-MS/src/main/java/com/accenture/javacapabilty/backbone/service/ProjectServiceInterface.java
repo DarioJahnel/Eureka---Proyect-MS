@@ -4,21 +4,22 @@ import java.util.Date;
 import java.util.List;
 
 import com.accenture.javacapabilty.backbone.model.Project;
+import java.util.Optional;
 
 public interface ProjectServiceInterface {
 
-	public Project getProjectById(Long id);
+	public Optional<Project> getProjectById(Long id);
 	
-	public String deleteProjectById(Long id);
+	public Boolean deleteProjectById(Long id);
 	
-	public Project modifyProjectById(Long id, Project editedProject);
+	public Boolean modifyProjectById(Long id, Project editedProject);
 	
 	public void createNewProject(Project newProject);
 	
-	public List<Project> getProjectsByClientId(Long clientId);
+	public Optional<List<Project>> getProjectsByClientId(Long clientId);
 	
-	public List<Project> getProjectsByStartDate(Date startDate);
+	public Optional<List<Project>> getProjectsByStartDate(Date startDate);
 	
-	public List<Project> getProjectsByEndDate(Date endDate);
+	public Optional<List<Project>> getProjectsByEndDate(Date endDate);
 	
 }
