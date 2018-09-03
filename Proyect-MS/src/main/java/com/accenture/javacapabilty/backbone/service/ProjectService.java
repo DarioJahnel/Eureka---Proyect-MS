@@ -12,8 +12,8 @@ import com.accenture.javacapabilty.backbone.repository.ProjectRepository;
 
 public class ProjectService implements ProjectServiceInterface{
 
-	@Autowired
-	ProjectRepository projectRepo;
+    @Autowired
+    ProjectRepository projectRepo;
 	
     @Override
     public Optional<Project> getProjectById(Long id) {
