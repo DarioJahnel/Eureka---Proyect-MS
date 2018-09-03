@@ -1,6 +1,7 @@
 package com.accenture.javacapabilty.backbone.model;
 
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,14 +13,31 @@ public class Project {
     //attributes
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="PRO_ID")
     Long Id;
+    
+    @Column(name="PRO_NAME")
     String name;
+    
+    @Column(name="PRO_DESC")
     String description;
+    
+    @Column(name="PRO_QRESOURCE")
     Long assignedAmount;
+    
+    @Column(name="PRO_CLIENT_ID")
     Long clientId; //parent
+    
+    @Column(name="PRO_CALENDAR_SDATE")
     Date calendarStartDate;
+    
+    @Column(name="PRO_CALENDAR_EDATE")
     Date calendarEndDate;
+    
+    @Column(name="PRO_CALENDAR_UDATE")
     Date lastUpdate;
+    
+    @Column(name="PRO_CALENDAR_STATE")
     Boolean active;
     
     //methods
@@ -41,7 +59,7 @@ public class Project {
         this.calendarEndDate = calendarEndDate;
     }
     
-    //getter
+    //getters
     public Long getId() { return Id; }
 
     public String getName() { return name; }
@@ -55,7 +73,9 @@ public class Project {
     public Date getCalendarStartDate() { return calendarStartDate; }
     
     public Date getCalendarEndDate() { return calendarEndDate; }
-
+    
+    public Date getLastUpdate() { return lastUpdate; }
+ 
     //setters
     public void setName(String name) { this.name = name; }
 
@@ -72,4 +92,7 @@ public class Project {
     public void setLastUpdate(Date lastUpdate) { this.lastUpdate = lastUpdate; }
 	
     public void setActive(Boolean active) { this.active = active; }
+    
+    //more methods
+    public void autoUpdate() { this.lastUpdate = new Date(); }
 }
