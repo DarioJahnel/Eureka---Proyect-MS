@@ -36,9 +36,15 @@ public class ProjectServiceTest extends TestCase {
     }
     
     @Test
-    @DisplayName("Create new project")
+    @DisplayName("Create Project")
     public void testCreateNewProjectById() {
         
         when(mocked.getId()).thenReturn(10l);
+   
+        projectService.createNewProject(mocked);
+        
+        assertTrue(projectService.));        
     }
+    
+    
 }

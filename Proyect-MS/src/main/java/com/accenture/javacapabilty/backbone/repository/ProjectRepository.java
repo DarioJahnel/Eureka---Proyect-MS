@@ -22,6 +22,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProjectRepository extends CrudRepository<Project,Long> {
     
+        boolean existsById(Long id);
+    
 	Optional<Project> findById(Long id);
     
 	List<Project> findByClientId(Long clientId);
