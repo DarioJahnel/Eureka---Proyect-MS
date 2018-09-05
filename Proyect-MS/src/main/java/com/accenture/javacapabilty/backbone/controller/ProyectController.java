@@ -5,6 +5,7 @@ import com.accenture.javacapabilty.backbone.service.ProjectServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -19,7 +20,7 @@ public class ProyectController {
     ProjectServiceInterface projectService;
         
     @PostMapping("/projects")
-    public void saveProject(@RequestBody Project created) {
+    public void saveProject(@ModelAttribute("project") Project created) {
         projectService.createNewProject(created);
     }
     
@@ -31,13 +32,13 @@ public class ProyectController {
     
     @DeleteMapping("projects/{projectId}")
     @ResponseBody
-    public Boolean deleteProject(@PathVariable Long projectId) {
+    public Boolean deleteProject(@ModelAttribute Long projectId) {
         return projectService.deleteProjectById(projectId);
     } 
     
     @PutMapping("projects/{projectId}")
     @ResponseBody
-    public Boolean updateProject(@PathVariable Long projectId, @RequestBody Project updatedProject){
+    public Boolean updateProject(@PathVariable Long projectId, @ModelAttribute Project updatedProject){
         return projectService.modifyProjectById(projectId, updatedProject);
     }    
 }
