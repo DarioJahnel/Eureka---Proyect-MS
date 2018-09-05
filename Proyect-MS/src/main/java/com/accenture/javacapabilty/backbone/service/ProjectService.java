@@ -21,6 +21,15 @@ public class ProjectService implements ProjectServiceInterface{
     public Optional<Project> getProjectById(Long id) {
     	return projectRepo.findById(id);   	
     }
+    
+    @Override
+    public Optional<List<Project>> getAllProjects() {
+        
+        List<Project> projects = new ArrayList<>();
+        projectRepo.findAll().forEach(p -> projects.add(p));
+        
+        return Optional.of(projects);
+    }
 
     @Override
     public Boolean deleteProjectById(Long id) {

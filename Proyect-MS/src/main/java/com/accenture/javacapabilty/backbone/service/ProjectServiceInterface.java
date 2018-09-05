@@ -9,6 +9,8 @@ import java.util.Optional;
 public interface ProjectServiceInterface {
 
 	public Optional<Project> getProjectById(Long id);
+        
+        public Optional<List<Project>> getAllProjects();
 	
 	public Boolean deleteProjectById(Long id);
 	

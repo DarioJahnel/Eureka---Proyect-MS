@@ -2,6 +2,7 @@ package com.accenture.javacapabilty.backbone.controller;
 
 import com.accenture.javacapabilty.backbone.model.Project;
 import com.accenture.javacapabilty.backbone.service.ProjectServiceInterface;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +28,12 @@ public class ProyectController {
     @ResponseBody
     public Project getProject(@PathVariable Long projectId) {
         return projectService.getProjectById(projectId).orElse(null);
+    }
+    
+    @GetMapping("projects")
+    @ResponseBody
+    public List<Project> getProjects() {
+        return projectService.getAllProjects().orElse(null);
     }
     
     @DeleteMapping("projects/{projectId}")
