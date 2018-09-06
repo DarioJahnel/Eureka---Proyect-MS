@@ -62,8 +62,8 @@ public class ProjectService implements ProjectServiceInterface{
     }
 
     @Override
-    public void createNewProject(Project newProject) {
-    	projectRepo.save(newProject);
+    public Optional<Project> createNewProject(Project newProject) {
+    	return Optional.of(projectRepo.save(newProject));
     }
 
     @Override

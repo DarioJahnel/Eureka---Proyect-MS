@@ -1,5 +1,8 @@
 package com.accenture.javacapabilty.backbone.model;
 
+import java.time.Year;
+import java.time.temporal.TemporalAmount;
+import java.util.Calendar;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -43,7 +46,14 @@ public class Project {
     //methods
     //constructors
     public Project() {
-
+        this.name = "unnamed";
+        this.description = "no description";
+        this.assignedAmount = 0l;
+        this.clientId = 0l;
+        this.calendarStartDate = new Date();
+        this.calendarEndDate = Date.from(calendarStartDate.toInstant().plus(1, ));
+        
+        
     }
     
     public Project(String name) {

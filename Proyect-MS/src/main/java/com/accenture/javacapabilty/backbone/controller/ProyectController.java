@@ -4,6 +4,8 @@ import com.accenture.javacapabilty.backbone.model.Project;
 import com.accenture.javacapabilty.backbone.service.ProjectServiceInterface;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,31 +22,27 @@ public class ProyectController {
     ProjectServiceInterface projectService;
         
     @PostMapping("/projects")
-    public void saveProject(@RequestBody Project created) {
-        projectService.createNewProject(created);
+    public ResponseEntity<Project> saveProject(@RequestBody Project created) {
+        return new ResponseEntity<>(projectService.createNewProject(created).orElse(null), HttpStatus.ACCEPTED);
     }
     
     @GetMapping("projects/{projectId}")
-    @ResponseBody
-    public Project getProject(@PathVariable Long projectId) {
-        return projectService.getProjectById(projectId).orElse(null);
+    public ResponseEntity<Project> getProject(@PathVariable Long projectId) {
+        return new ResponseEntity<>(projectService.getProjectById(projectId).orElse(null), HttpStatus.FOUND);
     }
     
     @GetMapping("projects")
-    @ResponseBody
-    public List<Project> getProjects() {
-        return projectService.getAllProjects().orElse(null);
+    public ResponseEntity<List<Project>> getProjects() {
+        return new ResponseEntity<>(projectService.getAllProjects().orElse(null), HttpStatus.FOUND);
     }
     
     @DeleteMapping("projects/{projectId}")
-    @ResponseBody
-    public Boolean deleteProject(@PathVariable Long projectId) {
-        return projectService.deleteProjectById(projectId);
+    public ResponseEntity<Boolean> deleteProject(@PathVariable Long projectId) {
+        return new ResponseEntity<>(projectService.deleteProjectById(projectId), HttpStatus.ACCEPTED);
     } 
     
     @PutMapping("projects/{projectId}")
-    @ResponseBody
-    public Boolean updateProject(@PathVariable Long projectId, @RequestBody Project updatedProject){
-        return projectService.modifyProjectById(projectId, updatedProject);
+    public ResponseEntity<Boolean> updateProject(@PathVariable Long projectId, @RequestBody Project updatedProject){
+        return new ResponseEntity<>(projectService.modifyProjectById(projectId, updatedProject), HttpStatus.ACCEPTED);
     }    
 }

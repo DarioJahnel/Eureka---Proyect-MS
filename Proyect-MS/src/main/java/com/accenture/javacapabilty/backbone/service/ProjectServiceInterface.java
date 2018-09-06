@@ -16,7 +16,7 @@ public interface ProjectServiceInterface {
 	
 	public Boolean modifyProjectById(Long id, Project editedProject);
 	
-	public void createNewProject(Project newProject);
+	public Optional<Project> createNewProject(Project newProject);
 	
 	public Optional<List<Project>> getProjectsByClientId(Long clientId);
 	
