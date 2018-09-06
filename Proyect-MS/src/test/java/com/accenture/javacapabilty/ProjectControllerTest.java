@@ -4,6 +4,7 @@ import com.accenture.javacapabilty.backbone.model.Project;
 import com.accenture.javacapabilty.backbone.service.ProjectService;
 import com.google.gson.Gson;
 import static org.hamcrest.CoreMatchers.containsString;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -26,6 +27,7 @@ public class ProjectControllerTest {
     
     Gson gson = new Gson();
     
+    @Test
     public void testControllerPost() throws Exception {
         
         Project created = new Project();
@@ -33,7 +35,7 @@ public class ProjectControllerTest {
         String request = gson.toJson(created);
         
         mockMvc.perform(
-		post("/calculate")
+		post("/projects")
 			.contentType(MediaType.APPLICATION_JSON)
 			.content(request))
 		.andExpect(status().isAccepted());
